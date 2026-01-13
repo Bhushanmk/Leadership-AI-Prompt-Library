@@ -1,0 +1,46 @@
+## Architecture Overview (As Understood)
+The UI initiates a synchronous request to a Provision Preview API, which
+aggregates data from multiple downstream services, applies rules, and
+returns generated provision text for user review before CCR execution.
+
+## Strengths
+- Clear separation between UI and backend processing
+- Reuse of existing Product, Benefit, and Pricing services
+- Early validation improves downstream CCR accuracy
+
+## Risks & Gaps
+
+| Area | Observation | Risk Level | Notes |
+|-----|------------|-----------|------|
+| Performance | Multiple synchronous downstream calls | High | Risk of slow UI response |
+| Scalability | No async or caching strategy | Medium | Load spikes may degrade system |
+| Reliability | No retry or fallback mechanism | High | Single service failure breaks flow |
+| Data Consistency | Temporary preview storage not versioned | Medium | Risk of stale preview data |
+| Operability | No logging or monitoring mentioned | Medium | Hard to debug production issues |
+
+## Key Assumptions
+- Downstream services can handle preview load
+- Preview generation time is acceptable for UI users
+- Preview data does not need audit persistence
+
+## Recommendations
+### Immediate (Before Build)
+- Introduce async rule execution or background processing
+- Add timeout, retry, and circuit breaker patterns
+- Cache frequently accessed configuration data
+
+### Near-Term (Post MVP)
+- Add audit trail for preview generations
+- Introduce monitoring and performance metrics
+- Consider bulk preview generation for large products
+
+## Diagram
+(UI) → Provision Preview API  
+→ Product / Benefit / Pricing Services  
+→ Rule Engine  
+→ Preview Store  
+→ UI Response
+
+Failure Points:
+- Downstream service latency
+- Rule execution time
