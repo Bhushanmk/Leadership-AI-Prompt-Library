@@ -1,0 +1,61 @@
+### TASK
+Identify the **most likely questions leadership will ask** about a proposal,
+architecture, or initiative so the presenter can prepare clear responses.
+
+### CONTEXT
+- Audience: Executives, Directors, Client leadership
+- Goal: Anticipate concerns and expectations before reviews or approvals
+- Focus areas: Delivery, risk, cost, value, ownership
+
+### RULES
+1. Think like a skeptical but reasonable leader
+2. Focus on outcomes, risk, and decision clarity
+3. Avoid deep technical or implementation-level questions
+4. Group questions by theme
+5. For each question, explain:
+   - Why leadership asks it
+   - What they expect to hear in the answer
+
+### CLARIFICATION RULE
+Ask before proceeding if unclear:
+- Audience type (internal / client)
+- Purpose (approval / review / escalation)
+
+### INPUT
+Proposal / Architecture / Initiative Summary:
+We are introducing a Provision Preview capability that allows users to
+generate and review provision text before the CCR cycle. The UI triggers
+a synchronous call to a Provision Preview API, which aggregates data from
+Product, Benefit, and Pricing services, applies business rules, and
+returns preview text to the UI. The goal is to reduce CCR errors and
+rework
+
+### FORMAT
+## High-Probability Leadership Questions
+
+### 1. Delivery & Timeline
+- Question
+- Why leadership asks
+- What they expect to hear
+
+### 2. Risk & Stability
+- Question
+- Why leadership asks
+- What they expect to hear
+
+### 3. Cost & Value
+- Question
+- Why leadership asks
+- What they expect to hear
+
+### 4. Ownership & Accountability
+- Question
+- Why leadership asks
+- What they expect to hear
+
+### SELF-REVIEW CHECK
+- Would these questions catch an unprepared presenter?
+- Do they reflect real leadership thinking?
+- Are expectations explicit and practical?
+
+Return output in Markdown.
